@@ -13,7 +13,12 @@ import Maybe
 countElements : List a -> Int
 countElements xs =
     -- your implementation here
-    0
+    case xs of
+        []->
+            0
+            
+        x::xs->
+            countElements xs + 1
 
 
 main : Html.Html a
