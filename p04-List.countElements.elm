@@ -9,12 +9,7 @@ import List
 countElements : List a -> Int
 countElements xs =
     -- your implementation here
-    case xs of
-        [] ->
-            0
-            
-        _::xs ->
-            1 + countElements xs
+    List.foldl (\_ n -> n + 1) 0 xs
 
 
 main : Html.Html a
