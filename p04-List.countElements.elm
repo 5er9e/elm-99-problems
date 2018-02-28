@@ -9,7 +9,7 @@ import List
 countElements : List a -> Int
 countElements xs =
     -- your implementation here
-    List.foldl (\_ n -> n + 1) 0 xs
+    List.sum (List.map (\x -> 1) xs)
 
 
 main : Html.Html a
