@@ -3,22 +3,18 @@
 -- Example
 -- countElements [1, 2, 3, 4, 3, 2, 1] == 7
 
-module Main exposing (..)
-
 import Html
 import List
-import Maybe
-
 
 countElements : List a -> Int
 countElements xs =
     -- your implementation here
     case xs of
-        []->
+        [] ->
             0
             
-        x::xs->
-            countElements xs + 1
+        _::xs ->
+            1 + countElements xs
 
 
 main : Html.Html a
