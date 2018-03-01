@@ -11,8 +11,11 @@ import List
 myReverse : List a -> List a
 myReverse xs =
     -- your implemenation goes here
-    []
-
+    case xs of
+        [] -> 
+            []
+        x::xs -> 
+            myReverse xs ++ x::[]
 
 main : Html.Html a      
 main =
