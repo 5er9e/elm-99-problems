@@ -15,7 +15,7 @@ myReverse xs =
         [] -> 
             []
         x::xs -> 
-            myReverse xs ++ x::[]
+            myReverse xs ++ [x]
 
 main : Html.Html a      
 main =
