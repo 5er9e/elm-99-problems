@@ -11,11 +11,7 @@ import List
 myReverse : List a -> List a
 myReverse xs =
     -- your implemenation goes here
-    case xs of
-        [] -> 
-            []
-        x::xs -> 
-            myReverse xs ++ [x]
+    List.foldl (::) [] xs
 
 main : Html.Html a      
 main =
@@ -25,7 +21,7 @@ main =
                 "Your implementation passed all tests."
 
             n -> 
-                "Your implementation failed " ++ toString n ++ " tests." 
+                "Your implementation failed " ++ toString n ++ " tests." ++ toString(List.foldl (::) [] [1, 2, 3, 4])
 
 
 test : Int
