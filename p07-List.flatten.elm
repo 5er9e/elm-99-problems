@@ -31,9 +31,20 @@ type NestedList a
 
 
 flatten : NestedList a -> List a
-flatten nl =
-    []
-
+flatten nl = 
+    case nl of
+        Elem nl ->
+            [nl] 
+        SubList nl ->
+            flattenList nl
+            
+flattenList: List (NestedList a) -> List a
+flattenList xs=
+    case xs of 
+        [] ->
+            []
+        x::xs ->
+            flatten x ++ flattenList xs
 
 main : Html.Html a
 main =
