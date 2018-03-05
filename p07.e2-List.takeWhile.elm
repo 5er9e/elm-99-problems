@@ -10,7 +10,13 @@ import List
 takeWhile : (a -> Bool) -> List a -> List a
 takeWhile predicate list =
     -- your implementation here
-    []
+    case list of
+        [] ->
+            []
+        x::xs ->
+            if predicate x then
+                x::takeWhile predicate xs
+            else []
 
 
 main : Html.Html a
@@ -34,7 +40,7 @@ test =
           , (takeWhile isEven [ 2, 4, 100000, 1 ] == [ 2, 4, 100000 ])
           , (takeWhile ((>) 5) (List.range 1 10) == [ 1, 2, 3, 4 ])
           , (takeWhile ((>) 50) (List.range 1 10) == List.range 1 10)
-
+          ]
 
 isEven x =
     x % 2 == 0
