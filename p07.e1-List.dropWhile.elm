@@ -10,7 +10,14 @@ import List
 dropWhile : (a -> Bool) -> List a -> List a
 dropWhile predicate list =
     -- your implementation here
-     list
+     case list of
+        [] ->
+            []
+        x::list ->
+            if predicate x then 
+                dropWhile predicate list
+            else x::list
+                
 
 
 main : Html.Html a
