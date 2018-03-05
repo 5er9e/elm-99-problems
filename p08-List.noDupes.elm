@@ -10,10 +10,20 @@ import Maybe
 
 
 noDupes : List a -> List a
-noDupes xs =
+noDupes list =
     -- your implementation goes here
-    []
-
+    case list of
+        [] ->
+            []
+        x0::xs ->
+            case xs of
+                [] -> [x0]
+                x1::xs  -> 
+                if x0 /= x1 then 
+                    x0::noDupes (x1::xs)
+                else
+                    noDupes (x1::xs )
+        
 
 main : Html.Html a
 main =
