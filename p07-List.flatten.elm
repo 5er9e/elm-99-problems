@@ -36,15 +36,7 @@ flatten nl =
         Elem nl ->
             [nl] 
         SubList nl ->
-            flattenList nl
-            
-flattenList: List (NestedList a) -> List a
-flattenList xs=
-    case xs of 
-        [] ->
-            []
-        x::xs ->
-            flatten x ++ flattenList xs
+            List.concatMap flatten nl
 
 main : Html.Html a
 main =
