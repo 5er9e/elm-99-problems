@@ -14,12 +14,32 @@ import Html
 import List
 import Maybe
 
-
 pack : List a -> List (List a)
-pack xs =
+pack xs = flatten([],xs)
     -- your implementation goes here
-    [ [] ]
 
+flatten:(List a,List a)->List(List a)
+flatten (xsa,xsb) =
+    case xsb of
+    []->
+        []
+    _->
+        case takeSame (xsa,xsb) of
+            (xsa,[])->[xsb]
+            (xsa,xsb)->xsa::flatten([],xsb)
+
+takeSame : (List a, List a) -> (List a, List a)
+takeSame (xsa,xsb) =
+        case xsb of
+            []->
+                ([],[])
+            x0::xs0->
+                case xsa of
+                    []->
+                        takeSame([x0],xs0)
+                    x1::xs1->
+                        if x0==x1 then takeSame(x0::xsa,xs0)
+                        else (xsa,xsb)
 
 main : Html.Html a
 main =
@@ -29,7 +49,7 @@ main =
                 "Your implementation passed all tests."
 
             x ->
-                "Your implementation failed " ++ (toString x) ++ " tests."
+                "Your implementation failed " ++ (toString x) ++ " tests." ++ toString (flatten ([], [1, 1, 1, 1, 2, 5, 5, 2, 1,1,1]))
 
 
 test : Int
