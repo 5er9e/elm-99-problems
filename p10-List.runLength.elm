@@ -1,0 +1,62 @@
+-- Problem 10
+-- Run-length encode a list of list to a list of tuples. Unlike lists, tuples can mix types. Use tuples (n, e) to encode a list where n is the number of duplicates of the element e.
+-- Example
+-- tuples = 
+--     [(3, 'a')
+--     , (1, 'b')
+--     , (3, 'c')
+--     , (4, 'd')
+--     , (5, 'e')
+--     , (6,'f')]
+
+-- lists =
+--     [ ['a','a','a']
+--     , ['b']
+--     , ['c', 'c', 'c']
+--     , ['d','d','d','d']
+--     , ['e']
+--     , ['f', 'f']
+--     ]
+
+-- runLengths lists == tuples
+-- Unit Test
+import Html
+import List
+import Maybe
+
+
+runLengths : List (List a) -> List ( Int, a )
+runLengths xss =
+    -- your implementation here
+    []
+
+
+main : Html.Html a
+main =
+    Html.text
+        <| case test of
+            0 ->
+                "Your implementation passed all tests."
+           
+            x ->
+                "Your implementation failed " ++ (toString x) ++ " tests."
+
+
+test : Int
+test =
+    List.length
+        <| List.filter ((==) False)
+            [ runLengths [ [ 1, 1, 1, 1 ], [ 2 ], [ 5, 5 ], [ 2 ], [ 1 ] ]
+                == [ ( 4, 1 ), ( 1, 2 ), ( 2, 5 ), ( 1, 2 ), ( 1, 1 ) ]
+            , runLengths [ [ 2 ], [ 5, 5 ], [ 2 ], [ 1 ] ]
+                == [ ( 1, 2 ), ( 2, 5 ), ( 1, 2 ), ( 1, 1 ) ]
+            , runLengths [ [ 1, 1, 1, 1 ], [ 2 ], [ 5, 5 ] ]
+                == [ ( 4, 1 ), ( 1, 2 ), ( 2, 5 ) ]
+            , runLengths [ [ 1, 1, 1, 1 ] ]
+                == [ ( 4, 1 ) ]
+            , runLengths [ [ "a", "a", "a", "a" ], [ "b" ], [ "c", "c" ], [ "b" ], [ "a" ] ]
+                == [ ( 4, "a" ), ( 1, "b" ), ( 2, "c" ), ( 1, "b" ), ( 1, "a" ) ]
+            , runLengths [ [] ] == []
+            , runLengths [ [], [ "a", "a" ] ] == [ ( 2, "a") ]
+            , runLengths [] == []
+            ]
